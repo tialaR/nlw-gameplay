@@ -59,6 +59,9 @@ export const styles = StyleSheet.create({
         color: theme.colors.highlight,
     },
     footer: {
+        paddingHorizontal: 24,
+    },
+    buttonContainer: {
         marginVertical: 24,
         marginBottom: 56,
     },

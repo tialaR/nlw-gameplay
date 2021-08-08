@@ -1,24 +1,30 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Alert, ActivityIndicator } from 'react-native';
+
+import { useAuth } from '../../hooks/auth';
 
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { BackGround } from '../../components/Background';
 
-import IlustrationImg from '../../assets/ilustration.png';
+import IllustrationImg from '../../assets/illustration.png';
 import { styles } from './styles';
+import { theme } from '../../global/styles/theme';
 
 export function SignIn() {
-    const navigation = useNavigation();
+    const { loading, signIn } = useAuth();
 
-    function handleSignIn() {
-        navigation.navigate('Home');
+    async function handleSignIn() {
+        try {
+            await signIn();
+        } catch (err) {
+            Alert.alert(err);
+        }
     }
 
     return(
         <BackGround>
             <View style={styles.container}>
-                <Image source={IlustrationImg} resizeMode='stretch' style={styles.image} />
+                <Image source={IllustrationImg} resizeMode='stretch' style={styles.image} />
                 <View style={styles.content}>
                     <Text style={styles.title}>
                         Conecte-se {'\n'}
@@ -30,10 +36,14 @@ export function SignIn() {
                         favoritos com seus amigos
                     </Text>
 
-                    <ButtonIcon 
-                        title="Entrar com discord"
-                        onPress={handleSignIn}
-                    />
+                    { 
+                        loading 
+                            ? <ActivityIndicator color={theme.colors.primary} /> 
+                            : <ButtonIcon 
+                                title="Entrar com discord"
+                                onPress={handleSignIn}
+                            />
+                    }
                 </View>
             </View>
         </BackGround>

@@ -114,25 +114,28 @@ export const AppointmentsCreate = () => {
                 </View>
               </View>
             </View>
-
-            <View style={[styles.field, { marginBottom: 12 }]}>
-              <Text style={styles.label}>
-                Descrição
-              </Text>
-              <Text style={styles.caracteresLimit}>
-                Max 100 caracteres
-              </Text>
-            </View>
-            <TextArea 
-              multiline
-              maxLength={100}
-              numberOfLines={5}
-              autoCorrect={false}
-            />
+          <View>
 
             <View style={styles.footer}>
-              <Button title="Agendar" />
+              <View style={[styles.field, { marginBottom: 12 }]}>
+                <Text style={styles.label}>
+                  Descrição
+                </Text>
+                <Text style={styles.caracteresLimit}>
+                  Max 100 caracteres
+                </Text>
+              </View>
+              <TextArea 
+                multiline
+                maxLength={100}
+                numberOfLines={5}
+                autoCorrect={false}
+              />
+              <View style={styles.buttonContainer}>
+                <Button title="Agendar" />
+              </View>
             </View>
+          </View>
         </ScrollView>
       </BackGround>
 

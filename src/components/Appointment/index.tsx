@@ -11,7 +11,7 @@ import { styles } from './styles';
 import { categories } from '../../utils/categories';
 import { theme } from '../../global/styles/theme';
 import PlayerSvg from '../../assets/player.svg';
-import CalenderSvg from '../../assets/calender.svg';
+import CalendarSvg from '../../assets/calendar.svg';
 
 export type AppointmentProps = {
     id: number;
@@ -48,7 +48,7 @@ export function Appointment({ data, ...rest }: Props) {
 
                     <View style={styles.footer}>
                         <View style={styles.dateInfo}>
-                            <CalenderSvg />
+                            <CalendarSvg />
                             <Text style={styles.date}>
                                 { data.date }
                             </Text>
